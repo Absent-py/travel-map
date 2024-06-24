@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 100vw; height: 100vh;">
+    <div style="width: 85vw; height: 85vh; margin: auto;">
         {{ coordinates }}
         <l-map ref="map" v-model:zoom="zoom" v-model:center="coordinates" :useGlobalLeaflet="false">
             <l-tile-layer 
@@ -30,8 +30,10 @@ export default {
   mounted() {
     this.$getLocation()
       .then((coordinates) => {
-        console.log(coordinates);
-        this.coordinates = coordinates
+        this.coordinates = [
+          coordinates.lat,
+          coordinates.lng
+        ]
       })
   },
   
